@@ -1,28 +1,32 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
-import { View, Image, FlatList } from 'react-native';
+import { View, Image, FlatList, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 import { Text, Post } from '../../Components'
 import AppMiddleware from '../../Store/Middleware/AppMiddleware';
 
 const Home = ({ getUsers, getPosts, users, posts }) => {
+    const navigation = useNavigation()
+
     useEffect(() => {
         getUsers()
         getPosts()
     }, [])
 
-    // console.log(users)
-    // console.log(posts)
+    const onPressPost = (post) => {
+        navigation.navigate('PostDetail', { post })
+    }
 
     return (
         <View style={{ flex: 1 }}>
-            <FlatList
+            {(users && posts) ? <FlatList
                 style={{ flex: 1 }}
                 data={posts}
                 renderItem={({ item, index }) => {
                     const user = users.find(x => x.id === item.userId)
-                    return <Post post={item} user={user} />
+                    return <Post post={item} user={user} onPress={() => onPressPost(item)} />
                 }}
-            />
+            /> : <ActivityIndicator />}
 
         </View>
     );
