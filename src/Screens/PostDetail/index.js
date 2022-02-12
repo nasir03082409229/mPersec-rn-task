@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ActivityIndicator, FlatList, Image, ScrollView, View } from 'react-native';
+import { ActivityIndicator, FlatList, Image, ScrollView, StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Comment, Post, Text } from '../../Components'
 import AppMiddleware from '../../Store/Middleware/AppMiddleware';
@@ -18,13 +18,13 @@ const PostDetail = ({ route, users, posts, getComments, comments }) => {
     const commentsByPost = comments ? comments?.filter(x => x.postId === post.id) : []
 
     return (
-        <ScrollView style={{ flex: 1, backgroundColor: '#fff', }}>
+        <ScrollView style={styles.container}>
             <Post post={postDetail} user={user} />
-            <View style={{ backgroundColor: '#fff', paddingHorizontal: 15 }}>
-                <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Comments</Text>
+            <View style={styles.sectionHeader}>
+                <Text style={styles.sectionHeadingText}>Comments</Text>
             </View>
             {commentsByPost ? <FlatList
-                style={{ flex: 1, paddingHorizontal: 15 }}
+                style={styles.paddingH15}
                 data={commentsByPost}
                 renderItem={({ item, index }) => {
                     return <Comment key={item.id} comment={item} />
@@ -33,7 +33,18 @@ const PostDetail = ({ route, users, posts, getComments, comments }) => {
         </ScrollView>
     );
 }
-
+const styles = StyleSheet.create({
+    container: {
+        flex: 1, backgroundColor: '#fff',
+    },
+    paddingH15: { paddingHorizontal: 15 },
+    sectionHeader: {
+        backgroundColor: '#fff', paddingHorizontal: 15
+    },
+    sectionHeadingText: {
+        fontWeight: 'bold', fontSize: 18
+    }
+})
 
 const mapStateToProps = (state) => {
 

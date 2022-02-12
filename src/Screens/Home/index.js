@@ -1,8 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
-import { View, Image, FlatList, ActivityIndicator } from 'react-native';
+import { ActivityIndicator, FlatList, StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
-import { Text, Post } from '../../Components'
+import { Post } from '../../Components';
 import AppMiddleware from '../../Store/Middleware/AppMiddleware';
 
 const Home = ({ getUsers, getPosts, users, posts }) => {
@@ -13,26 +13,29 @@ const Home = ({ getUsers, getPosts, users, posts }) => {
         getPosts()
     }, [])
 
-    const onPressPost = (post) => {
-        navigation.navigate('PostDetail', { post })
-    }
+    const onPressPost = (post) => navigation.navigate('PostDetail', { post })
 
     return (
-        <View style={{ flex: 1 }}>
+        <View style={styles.container}>
             {(users && posts) ? <FlatList
-                style={{ flex: 1 }}
                 data={posts}
-                renderItem={({ item, index }) => {
+                renderItem={({ item }) => {
                     const user = users.find(x => x.id === item.userId)
                     return <Post key={item.id} post={item} user={user} onPress={() => onPressPost(item)} />
                 }}
-            /> : <ActivityIndicator />}
+            /> : <View style={styles.loaderContainer}>
+                <ActivityIndicator size={'large'} />
+            </View>}
 
         </View>
     );
 }
-const mapStateToProps = (state) => {
 
+const styles = StyleSheet.create({
+    container: { flex: 1 },
+    loaderContainer: { flex: 1, justifyContent: 'center', alignItems: 'center' }
+})
+const mapStateToProps = (state) => {
     return {
         users: state.users,
         posts: state.posts

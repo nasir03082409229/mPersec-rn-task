@@ -1,32 +1,49 @@
 import React from 'react';
-import { Image, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import { Text } from '..';
 
-const Comment = ({ comment }) =>
-(
-    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-        <View style={{}}>
+const Comment = ({ comment }) => (
+    <View style={styles.container}>
+        <View>
             <Image source={{ uri: `https://www.w3schools.com/howto/img_avatar.png` }}
-                style={{
-                    width: 50,
-                    height: 50,
-                    borderRadius: 100
-                }} />
+                style={styles.avatar} />
         </View>
-        <View style={{
-            paddingHorizontal: 10,
-            paddingVertical: 10,
-            marginVertical: 5, marginHorizontal: 5, borderRadius: 6,
-            backgroundColor: '#f0ebfc',
-            flex: 1
-        }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Text style={{ fontWeight: 'bold', fontSize: 14 }}>{comment?.email}</Text>
+        <View style={styles.commentContainer}>
+            <View style={styles.userNameContainer}>
+                <Text style={styles.username}>{comment?.email}</Text>
             </View>
-            <Text style={{ fontSize: 12 }}>DevOps Developer</Text>
-            <Text style={{ fontSize: 14, }}>{comment?.body}</Text>
+            <Text style={styles.font12}>Frontend Developer</Text>
+            <Text style={styles.font14}>{comment?.body}</Text>
         </View>
     </View>
 );
-
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'row', alignItems: 'center'
+    },
+    avatar: {
+        width: 50,
+        height: 50,
+        borderRadius: 100
+    },
+    commentContainer: {
+        paddingHorizontal: 10,
+        paddingVertical: 10,
+        marginVertical: 5, marginHorizontal: 5, borderRadius: 6,
+        backgroundColor: '#f0ebfc',
+        flex: 1
+    },
+    userNameContainer: {
+        flexDirection: 'row', alignItems: 'center'
+    },
+    username: {
+        fontWeight: 'bold', fontSize: 14
+    },
+    font12: {
+        fontSize: 12
+    },
+    font14: {
+        fontSize: 14
+    }
+})
 export default Comment;
