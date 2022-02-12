@@ -1,10 +1,10 @@
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import Reducers from './Reducers';
+import AppReducer from './Reducers/AppReducer';
 
-const store = createStore(Reducers, applyMiddleware(thunk));
+const store = createStore(AppReducer, applyMiddleware(thunk));
 
 store.subscribe(async() => {
-    console.log('STATE=>', JSON.stringify(store.getState()));
+    console.log('STATE=>', store.getState());
 });
-export { persistor, store };
+export { store };
