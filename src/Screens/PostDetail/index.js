@@ -16,6 +16,7 @@ const PostDetail = ({ route, users, posts, getComments, comments }) => {
     }, [])
 
     const commentsByPost = comments ? comments?.filter(x => x.postId === post.id) : []
+
     return (
         <ScrollView style={{ flex: 1, backgroundColor: '#fff', }}>
             <Post post={postDetail} user={user} />
@@ -26,7 +27,7 @@ const PostDetail = ({ route, users, posts, getComments, comments }) => {
                 style={{ flex: 1, paddingHorizontal: 15 }}
                 data={commentsByPost}
                 renderItem={({ item, index }) => {
-                    return <Comment comment={item} />
+                    return <Comment key={item.id} comment={item} />
                 }}
             /> : <ActivityIndicator />}
         </ScrollView>

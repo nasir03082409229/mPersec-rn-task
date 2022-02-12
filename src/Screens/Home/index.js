@@ -24,7 +24,7 @@ const Home = ({ getUsers, getPosts, users, posts }) => {
                 data={posts}
                 renderItem={({ item, index }) => {
                     const user = users.find(x => x.id === item.userId)
-                    return <Post post={item} user={user} onPress={() => onPressPost(item)} />
+                    return <Post key={item.id} post={item} user={user} onPress={() => onPressPost(item)} />
                 }}
             /> : <ActivityIndicator />}
 
