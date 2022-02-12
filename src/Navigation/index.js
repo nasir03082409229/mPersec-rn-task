@@ -10,11 +10,9 @@ const AppNavigation = () => {
 
   return <Provider store={store}>
     <NavigationContainer>
-      <AppStack.Navigator screenOptions={{ headerShown: !false, }}
-        initialRouteName={'Home'}
-      >
+      <AppStack.Navigator initialRouteName={'Home'} >
         <AppStack.Screen name="Home" component={Home} />
-        <AppStack.Screen name="PostDetail" component={PostDetail} />
+        <AppStack.Screen name="PostDetail" component={PostDetail} options={{ headerTitle: 'Post Detail' }} />
       </AppStack.Navigator>
     </NavigationContainer>
   </Provider>

@@ -1,11 +1,13 @@
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import { Text } from '..';
+import { Colors } from '../../Styles';
+import { avatar } from '../../Utils';
 
 const Comment = ({ comment }) => (
     <View style={styles.container}>
         <View>
-            <Image source={{ uri: `https://www.w3schools.com/howto/img_avatar.png` }}
+            <Image source={{ uri: avatar }}
                 style={styles.avatar} />
         </View>
         <View style={styles.commentContainer}>
@@ -30,7 +32,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         paddingVertical: 10,
         marginVertical: 5, marginHorizontal: 5, borderRadius: 6,
-        backgroundColor: '#f0ebfc',
+        backgroundColor: Colors.LIGHT_BLUE,
         flex: 1
     },
     userNameContainer: {

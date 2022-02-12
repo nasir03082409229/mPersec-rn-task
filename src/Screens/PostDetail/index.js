@@ -3,6 +3,7 @@ import { ActivityIndicator, FlatList, Image, ScrollView, StyleSheet, View } from
 import { connect } from 'react-redux';
 import { Comment, Post, Text } from '../../Components'
 import AppMiddleware from '../../Store/Middleware/AppMiddleware';
+import { Colors } from '../../Styles';
 
 
 const PostDetail = ({ route, users, posts, getComments, comments }) => {
@@ -35,11 +36,11 @@ const PostDetail = ({ route, users, posts, getComments, comments }) => {
 }
 const styles = StyleSheet.create({
     container: {
-        flex: 1, backgroundColor: '#fff',
+        flex: 1, backgroundColor: Colors.WHITE,
     },
     paddingH15: { paddingHorizontal: 15 },
     sectionHeader: {
-        backgroundColor: '#fff', paddingHorizontal: 15
+        backgroundColor: Colors.WHITE, paddingHorizontal: 15
     },
     sectionHeadingText: {
         fontWeight: 'bold', fontSize: 18

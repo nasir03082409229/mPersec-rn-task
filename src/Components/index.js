@@ -6,5 +6,4 @@ export {
     Post,
     Text,
     Comment
-
 };

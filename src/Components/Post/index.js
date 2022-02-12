@@ -1,6 +1,8 @@
 import React from 'react';
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Text } from '../../Components'
+import { Colors } from '../../Styles';
+import { avatar } from '../../Utils';
 
 
 const Post = ({ user, post, onPress }) => {
@@ -8,7 +10,7 @@ const Post = ({ user, post, onPress }) => {
     return (
         <TouchableOpacity onPress={onPress} style={styles.container}>
             <View style={styles.postContainer}>
-                <Image source={{ uri: `https://www.w3schools.com/howto/img_avatar.png` }}
+                <Image source={{ uri: avatar }}
                     style={styles.avatar} />
                 <View style={styles.userContainer}>
                     <View style={styles.userNameContainer}>
@@ -28,7 +30,7 @@ const Post = ({ user, post, onPress }) => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#fff', marginVertical: 5, padding: 15,
+        backgroundColor: Colors.WHITE, marginVertical: 5, padding: 15,
     },
     postContainer: {
         flexDirection: 'row'
@@ -45,7 +47,7 @@ const styles = StyleSheet.create({
     },
     userConnectLevel: {
         width: 5, height: 5,
-        backgroundColor: 'gray', borderRadius: 10, marginHorizontal: 8
+        backgroundColor: Colors.GRAY, borderRadius: 10, marginHorizontal: 8
     },
     postBody: {
         paddingVertical: 5
