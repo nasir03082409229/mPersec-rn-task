@@ -7,7 +7,7 @@ const AppNavigation = () => {
   const AppStack = createNativeStackNavigator();
 
   return <NavigationContainer>
-    <AppStack.Navigator screenOptions={{ headerShown: false }}
+    <AppStack.Navigator screenOptions={{ headerShown: !false, }}
       initialRouteName={'PostDetail'}
     >
       <AppStack.Screen name="Home" component={Home} />
